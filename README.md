@@ -1,24 +1,82 @@
-# Tax
+# Sales Tax Calculator
 
-TODO: Delete this and the text below, and describe your gem
+This application calculates the sales taxes and generates a receipt for a given list of items. It applies a basic sales tax of 10% on all goods except for books, food, and medical products, which are exempt. Additionally, it applies an import duty sales tax of 5% on all imported goods.
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/tax`. To experiment with that code, run `bin/console` for an interactive prompt.
+# Requirements
+Ruby 3.x
 
-## Installation
+# Usage
+1. Clone the repository or download the source code.
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
+2. Open a terminal or command prompt and navigate to the project directory.
 
-Install the gem and add to the application's Gemfile by executing:
+3. Run the following command to run the test suite with all the samples outputs:
 
-    $ bundle add UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
+```bash
+bundle install && bundle exec rspec
+```
 
-If bundler is not being used to manage dependencies, install the gem by executing:
+In order to use this gem you need to build and install. To build do:
+```bash
+gem build tax.gemspec
+```
 
-    $ gem install UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
+After that you can install it:
+```bash
+gem install tax-0.1.0.gem
+```
 
-## Usage
+4. Run the following command to execute the application:
 
-TODO: Write usage instructions here
+```bash
+ruby sample_application.rb
+```
+
+The application will generate the receipts for the provided test inputs and display them in the terminal.
+
+# Input Format
+The application accepts input in the following format:
+
+```
+<quantity> <item> at <price>
+<quantity>: An integer representing the quantity of the item.
+<item>: The name of the item.
+<price>: The price of the item.
+The application supports items with multiple words in their names, such as "imported box of chocolates."
+```
+
+# Sample Output
+The application produces the following outputs for the provided test inputs:
+
+### Output 1
+```yaml
+2 book: 24.98
+1 music CD: 16.49
+1 chocolate bar: 0.85
+Sales Taxes: 1.50
+Total: 42.32
+```
+
+### Output 2
+```yaml
+1 imported box of chocolates: 10.50
+1 imported bottle of perfume: 54.65
+Sales Taxes: 7.65
+Total: 65.15
+```
+
+### Output 3
+```yaml
+1 imported bottle of perfume: 32.19
+1 bottle of perfume: 20.89
+1 packet of headache pills: 9.75
+3 imported box of chocolates: 35.55
+Sales Taxes: 7.90
+Total: 98.38
+```
+Please make sure to provide input in the specified format to get accurate results.
+
+Feel free to modify the test inputs in the source code or add your own inputs to test the application (`sample_application.rb`) with different scenarios.
 
 ## Development
 
